@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" href="https://cdn2.iconfinder.com/data/icons/seo-web/512/website-code-512.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+
+<body class="bg-dark text-light">
+
+    <nav class="navbar navbar-light bg-warning">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img width="100" src="/images/Coding With MO_logo.png" alt="LOGO">
+            </a>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row p-2 mt-5">
+            <form action="/dashbord" method="post" dir="rtl" class="col-md-6 col-xs-12">
+                <div class="text-center mb-3">
+                    <img width="150" src="/images/mohammed.png" alt="LOGO">
+                    <h5 class="mt-3">Mohammed Al-Issa</h5>
+                    <h5 class="mb-3">Front - end developer</h5>
+                    <h5>مرحبا بك في الدورة المجانيه</h5>
+                    <img class="mt-3 bg-warning rounded-3 p-2 logo-img" width="100"
+                        src="/images/Coding With MO_logo.png" alt="CWMO-logo">
+                </div>
+                <div class="mx-auto w-75">
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">البريد الألكتروني :</label>
+                        <input type="email" name="email" class="form-control" id="exampleInputEmail1"
+                            aria-describedby="emailHelp">
+
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">كلمة السر :</label>
+                        <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+                    </div>
+
+                    <div class="mb-3 form-check">
+                        <div id="emailHelp" class="">حساب جديد ؟ <a class="text-warning" href="/register">اضغط
+                                هنا</a></div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">تسجيل الدخول</button>
+
+                </div>
+                <div class="img-logos-container mt-3 bg-warning rounded-3 p-3 w-50 mx-auto mt-5 mb-5">
+                    <img width="70" height="70" src="/images/html5.png" alt="HTML-logo">
+                    <img width="50" height="70" src="/images/CSS3_logo_and_wordmark.svg.png" alt="CSS-logo">
+
+                </div>
+            </form>
+            <div class="col-md-6 col-xs-12">
+
+
+                <ul dir="rtl" class="mb-5 voordelen">
+                    <li>ستحصل على دورة مجانيه HTML , CSS</li>
+                    <li>لا يحتاج ان تكون لديك اي فكره عن البرمجه</li>
+                    <li>ستكون الدورة live</li>
+                    <li>التعرف على اصدقاء وتبادل المعلومات في ما بينكم</li>
+                </ul>
+
+
+                <div class="text-center  mt-5">
+                    <iframe class="iframe col-12" width="500" height="315"
+                        src="https://www.youtube.com/embed/lXNMPanLmQg?si=U0u8L9SJUGW1Wa0F" title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                </div>
+                <!-- <hr class="mt-5 mb-5"> -->
+                <%let dontHaveAnyIdee=0%>
+                    <%let lettelbitIdee=0%>
+                        <%let haveIdee=0%>
+                            <% students.forEach(student=>{%>
+                                <% if(student.status==="ليس لدي اي فكره عن البرمجه." ){%>
+                                    <% dontHaveAnyIdee=dontHaveAnyIdee+1%>
+                                        <% } else if(student.status==="نعم , عندي فكره بسيطه عن البرمجه" ){%>
+                                            <% lettelbitIdee=lettelbitIdee + 1%>
+                                                <%}else{%>
+                                                    <% haveIdee=haveIdee + 1%>
+                                                        <%}%>
+                                                            <%})%>
+
+                                                                <div class="mt-3 border border-dark  rounded-3 p-3">
+
+                                                                    <h4 class="text-center">أحصائيات</h4>
+                                                                    <p dir="rtl" class="">
+                                                                        ليس عندي اي فكره عن البرمجه :
+                                                                        <%=dontHaveAnyIdee%>
+                                                                    </p>
+                                                                    <p dir="rtl" class="">
+                                                                        نعم , عندي فكره بسيطه عن البرمجه :
+                                                                        <%=lettelbitIdee%>
+                                                                    </p>
+                                                                    <p dir="rtl" class="">
+                                                                        نعم , عندي فكره جيده عن البرمجه :
+                                                                        <%=haveIdee%>
+                                                                    </p>
+                                                                    <hr class="">
+                                                                    <h4 class="mt-3 text-center" dir="rtl">
+                                                                        <img class="liveGreenPoint" width="30"
+                                                                            src="https://assets-v2.lottiefiles.com/a/02f5c5e4-117f-11ee-8427-371a3b703187/qwBAQqDpZI.gif"
+                                                                            alt=""> عدد
+                                                                        المشتركين في
+                                                                        الدورة حتى
+                                                                        الأن :
+                                                                        <span class="text-warning">
+                                                                            <%=students.length%>
+                                                                        </span>
+
+                                                                    </h4>
+                                                                </div>
+
+
+
+
+
+
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+    <!-- <footer class="footer">
+        <p dir="rtl">🧡ضع هدفك امام عينك🧡</p>
+    </footer> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

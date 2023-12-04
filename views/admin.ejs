@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" href="https://cdn2.iconfinder.com/data/icons/seo-web/512/website-code-512.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+
+<body dir="rtl" class="bg-dark text-light">
+    <nav class="navbar navbar-light bg-warning">
+        <div class="container d-flex justify-content-evenl">
+            <form action="/abc/logout" method="post">
+                <button type="submit" class="btn btn-dark">تسجيل الخروج</button>
+            </form>
+            <a class="navbar-brand" href="/">
+                <img width="100" src="/images/Coding With MO_logo.png" alt="LOGO">
+            </a>
+            <h3 dir="rtl">مرحبا
+            </h3>
+        </div>
+    </nav>
+
+    <form action="/update/all" method="post">
+        <input type="submit" value="Update ALL">
+    </form>
+    <h2 class="text-center">بيانات الطلاب</h2>
+
+    <table>
+        <tr>
+            <th>الأسم</th>
+            <th>البريد الألكتروني</th>
+            <th>البلد</th>
+            <th>رقم الهاتف</th>
+            <th>تعديل البيانات</th>
+        </tr>
+        <%if(students.length===0){%>
+            <tr style="text-align: center;">
+                <td>NO DATA</td>
+                <td>NO DATA</td>
+                <td>NO DATA</td>
+                <td>NO DATA</td>
+                <td>NO DATA</td>
+            </tr>
+            <% } else {%>
+                <%students.forEach((student)=>{%>
+
+                    <tr>
+                        <td class="text-center">
+                            <%=student.name%>
+                        </td>
+                        <td class="text-center">
+                            <%=student.email%>
+                        </td>
+                        <td class="text-center">
+                            <%=student.country%>
+                        </td>
+                        <td class="text-center">
+                            <%=student.telephone%>
+                        </td>
+                        <td class="text-center">
+                            <form action="/<%=student._id%>" method="post">
+                                <input type="submit" value="Edite">
+
+                            </form>
+
+
+                            <br>
+                            <form action="/delete/student" method="post">
+                                <input type="hidden" name="student_id" value="<%=student._id%>">
+                                <input type="submit" class="bg-danger" value="Delete Student">
+                            </form>
+                        </td>
+                    </tr>
+                    <%})%>
+                        <% }%>
+                            <%-include("footer.ejs")-%>
