@@ -5,7 +5,8 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const session = require("express-session");
 const bcrypt = require('bcrypt');
-const saltRounds = process.env.ROUNDS
+var nodemailer = require('nodemailer');
+const saltRounds = 10;
 const app = express();
 
 app.use(express.static('public'))
@@ -14,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 mongoose.connect(`mongodb+srv://admin-mohammed:${process.env.PASSWORD}@cluster0.c4wkhb3.mongodb.net/myDB?retryWrites=true&w=majority`)
 app.use(session({
-    secret: process.env.SECRET,
+    secret: `${process.env.SECRET}`,
     resave: false,
     saveUninitialized: false
 }));
@@ -40,6 +41,7 @@ const isAuth = (req, res, next) => {
     }
 }
 app.get("/", async (req, res) => {
+
     if (req.session.isAuth) {
         res.redirect("/dashbord")
     } else {
@@ -56,7 +58,7 @@ app.get("/register", async (req, res) => {
         res.render("register.ejs", { message: "" })
     }
 })
-let xyz;
+let studentNameNew;
 app.post("/register", async (req, res) => {
     const username = req.body.name;
     const userEmail = req.body.email;
@@ -89,6 +91,9 @@ app.post("/register", async (req, res) => {
 
             req.session.isAuth = true;
             // let adminAccount = await User.findOneAndUpdate({ email: "admin@admin.com" }, { daily: [{ datum: "10-02-1987" }] })
+
+
+
             res.redirect("/admin/page");
         } else {
 
@@ -104,11 +109,37 @@ app.post("/register", async (req, res) => {
 
                 })
                 newUser.save()
-                xyz = userEmail
 
 
             });
             req.session.isAuth = true;
+            studentNameNew = username;
+            // send email 
+
+            var nodemailer = require('nodemailer');
+
+            var transporter = nodemailer.createTransport({
+                service: 'gmail',
+                auth: {
+                    user: 'mas.webdev24@gmail.com',
+                    pass: `${process.env.PASS_AUTH}`
+                }
+            });
+
+            var mailOptions = {
+                from: 'mas.webdev24@gmail.com',
+                to: `${userEmail}`,
+                subject: 'تم تسجيلك بنجاح في الدورة المجانية 🎉',
+                html: `<div dir="rtl"><h2  style="color:green">مرحبا  ${username} 👋</h2> <h3>شكرا على تسجيلك في الدورة المجانية. لقد تم تسجيل بياناتك بنجاح في قاعدة البيانات. 👍</h3> <hr> <h2>ستبدأ الدورة بأذن الله <span style="color:red">يوم الجمعة المصادف 12-01-2024 الساعة السابعة بتوقيت مصر ⏰🗓</span></h2> <h3> استخدم هذا الرابط للدخول في كروب الواتس اب : https://chat.whatsapp.com/EzAFg7e5Xb7JgYSGl20T0T 📣</h3> <h3>اضف نفسك ايضاً في مجتمع الواتسب اب لكي تحصل على التحديثات بخصوص الدورة المجانيه : https://chat.whatsapp.com/LpmFkZ8u51k99oouSNHPnA 👉</h3><h3>اذا كنت غير مشترك على قنانتنا على اليوتيوب فبأمكانك الاشتراك معنا عبر هذا الرابط : https://www.youtube.com/@codingwithmo8716 لكي يصلك كل ما هو جديد 🎬</h3><h3>نتشرف بانضمامك معنا على صفحة الفيس بوك : https://www.facebook.com/profile.php?id=100086427609254 📜</h3><br><br><p>مع تحيات</p><p>فريق عمل Coding with MO</p></div>`
+            };
+
+            transporter.sendMail(mailOptions, function (error, info) {
+                if (error) {
+                    console.log(error);
+                } else {
+                    console.log('Email sent: ' + info.response);
+                }
+            });
             res.redirect("/dashbord")
 
         }
@@ -124,6 +155,7 @@ app.post("/register", async (req, res) => {
 })
 
 app.post("/dashbord", async (req, res) => {
+
     let userEmail = req.body.email;
     let userPassword = req.body.password;
     let checkUser = await User.findOne({ email: userEmail });
@@ -171,7 +203,7 @@ app.get("/dashbord", isAuth, async (req, res) => {
 
 
 
-    res.render("dashbord.ejs", { studentName: "", studentDaily: "" })
+    res.render("dashbord.ejs", { studentName: "", studentDaily: "", studentNameNew: studentNameNew })
 })
 
 
