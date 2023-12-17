@@ -1,4 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=El+Messiri:wght@700&display=swap');
+html{
+  scroll-behavior: smooth;
+}
+.aankondige{
+  text-decoration: none;
+  color: white;
+}
 .footer{
     position: absolute;
     left: 0;
