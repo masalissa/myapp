@@ -31,11 +31,12 @@
     <h2 class="text-center">بيانات الطلاب</h2>
 
     <table class="col-lg-12">
-        <tr>
+        <tr class="text-center">
             <th>الأسم</th>
             <th>البريد الألكتروني</th>
             <th>البلد</th>
             <th>رقم الهاتف</th>
+            <th>الحضور</th>
             <th>تعديل البيانات</th>
         </tr>
         <%if(students.length===0){%>
@@ -50,17 +51,48 @@
                 <%students.forEach((student)=>{%>
 
                     <tr>
-                        <td class="text-center">
+                        <td class="text-center fs-4">
                             <%=student.name%>
                         </td>
-                        <td class="text-center">
+                        <td class="text-center fs-4">
                             <%=student.email%>
                         </td>
-                        <td class="text-center">
+                        <td class="text-center fs-4">
                             <%=student.country%>
                         </td>
-                        <td class="text-center">
+                        <td class="text-center fs-4">
                             <%=student.telephone%>
+                        </td>
+                        <td class="text-center fs-4">
+
+
+                            <span>
+                                <%=student.daily.length%>
+                            </span> /
+                            <%let aanwijzig=0%>
+                                <%let afwijzig=0%>
+                                    <% student.daily.forEach(item=>{%>
+                                        <% if(item.aanofafwijzig==="on" ){%>
+
+                                            <%console.log("JA OK!!")%>
+                                                <% aanwijzig++ %>
+                                                    <span class="text-success fs-4">
+                                                        <%=aanwijzig %>
+                                                    </span>
+                                                    <% } else {%>
+                                                        <%console.log(item.aanofafwijzig)%>
+                                                            <% afwijzig++%>
+                                                                /
+                                                                <span class="text-danger fs-4">
+
+                                                                    <%=afwijzig %>
+                                                                </span>
+                                                                <% }%>
+                                                                    <% })%>
+
+
+
+
                         </td>
                         <td class="text-center">
                             <form action="/<%=student._id%>" method="post">

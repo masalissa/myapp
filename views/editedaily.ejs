@@ -141,60 +141,64 @@
         </table>
         <% }%>
             <hr class="text-light my-5">
-            <form dir="rtl" class="w-50 mx-auto mt-5" action="/update/dailyupdate" method="post">
-                <input type="hidden" name="seeID" value="<%= detailsStudent._id %>">
-                <div class="mb-3">
-                    <label for="date" class="form-label">تاريخ المحاضره :</label>
-                    <input type="date" required class="form-control" name="date" id="date" aria-describedby="emailHelp">
-                </div>
-                <div class="mb-3">
-                    <label for="link" class="form-label">اضافة رابط اول :</label>
-                    <input type="text" class="form-control" name="link" id="link" aria-describedby="emailHelp">
-                </div>
-                <div class="mb-3">
-                    <label for="linkName" class="form-label">اسم الموقع : </label>
-                    <input type="text" class="form-control" name="linkName" id="linkName" aria-describedby="emailHelp">
-                </div>
-                <div class="mb-3">
-                    <label for="link2" class="form-label">اضافة رابط ثاني :</label>
-                    <input type="text" class="form-control" name="link2" id="link2" aria-describedby="emailHelp">
-                </div>
-                <div class="mb-3">
-                    <label for="linkName2" class="form-label">اسم الموقع :</label>
-                    <input type="text" class="form-control" name="linkName2" id="linkName2"
-                        aria-describedby="emailHelp">
-                </div>
-                <div class="mb-3">
-                    <label for="link3" class="form-label">اضافة رابط الثالث :</label>
-                    <input type="text" class="form-control" name="link3" id="link3" aria-describedby="emailHelp">
-                </div>
-                <div class="mb-3">
-                    <label for="linkName3" class="form-label">اسم الموقع :</label>
-                    <input type="text" class="form-control" name="linkName3" id="linkName3"
-                        aria-describedby="emailHelp">
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" required type="radio" name="aanofafwijzig" id="aan" value="on">
-                    <label class="form-check-label" for="aan">
-                        حاضر
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="aanofafwijzig" id="af" value="off">
-                    <label class="form-check-label" for="af">
-                        غائب
-                    </label>
-                </div>
+            <div class="w-50 mx-auto">
+                <form dir="rtl" class="mx-auto mt-5" action="/update/dailyupdate" method="post">
+                    <input type="hidden" name="seeID" value="<%= detailsStudent._id %>">
+                    <div class="mb-3">
+                        <label for="date" class="form-label">تاريخ المحاضره :</label>
+                        <input type="date" required class="form-control" name="date" id="date"
+                            aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="link" class="form-label">اضافة رابط اول :</label>
+                        <input type="text" class="form-control" name="link" id="link" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="linkName" class="form-label">اسم الموقع : </label>
+                        <input type="text" class="form-control" name="linkName" id="linkName"
+                            aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="link2" class="form-label">اضافة رابط ثاني :</label>
+                        <input type="text" class="form-control" name="link2" id="link2" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="linkName2" class="form-label">اسم الموقع :</label>
+                        <input type="text" class="form-control" name="linkName2" id="linkName2"
+                            aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="link3" class="form-label">اضافة رابط الثالث :</label>
+                        <input type="text" class="form-control" name="link3" id="link3" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="linkName3" class="form-label">اسم الموقع :</label>
+                        <input type="text" class="form-control" name="linkName3" id="linkName3"
+                            aria-describedby="emailHelp">
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" required type="radio" name="aanofafwijzig" id="aan" value="on">
+                        <label class="form-check-label" for="aan">
+                            حاضر
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="aanofafwijzig" id="af" value="off">
+                        <label class="form-check-label" for="af">
+                            غائب
+                        </label>
+                    </div>
 
-                <div class="my-3">
-                    <label for="exampleFormControlTextarea1" class="form-label">كتابة ملاحظة للطالب :</label>
-                    <textarea class="form-control" required name="note" id="exampleFormControlTextarea1"
-                        rows="3"></textarea>
-                </div>
+                    <div class="my-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">كتابة ملاحظة للطالب :</label>
+                        <textarea class="form-control" required name="note" id="exampleFormControlTextarea1"
+                            rows="3"></textarea>
+                    </div>
 
-                <button type="submit" class="btn btn-primary ms-4">Add to daily</button>
+                    <button type="submit" class="btn btn-primary ms-4">Add to daily</button>
 
-            </form>
+                </form>
+            </div>
             <form action="/admin/page" method="get">
                 <button type="submit" class="btn btn-warning">To Admin page</button>
             </form>
